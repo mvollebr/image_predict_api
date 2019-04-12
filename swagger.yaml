@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: News classifier
+  title: Sport classifier
   version: "0.1"
 consumes:
   - application/json
@@ -11,7 +11,7 @@ paths:
   /predictions:
     post:
       operationId: app.post_predictions
-      summary: Predicts categories of the given news articles
+      summary: Predicts sports categories of the most populair sports in the world
       parameters:
         - name: query
           in: body
@@ -26,6 +26,12 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Prediction'
+      security:
+        - basic: []
+securityDefinitions:
+  basic:
+    type: basic
+    x-basicInfoFunc: app.basic_auth
 
 definitions:
   Prediction:
@@ -36,13 +42,13 @@ definitions:
     properties:
       category:
         type: string
-        description: Predicted category of the feedback
-        example: "irrelevant"
+        description: Predicted category of the sport
+        example: "http://examepl.com/sport/jpb"
         readOnly: true
       text:
         type: string
         description: query text
-        example: "Everything is fine"
+        example: "http://exmaple.com/sport.jpg"
         readOnly: true
   Query:
     type: object
@@ -51,4 +57,4 @@ definitions:
     properties:
       text:
         type: string
-        description: text to predict
+        description: url to predict

@@ -13,6 +13,12 @@ import requests
 path_model_loc = "C:/Users/mickv/Documents/Jupyter Books/Workbooks/Projects/web_server/example/model"
 learn_predict = load_learner(path_model_loc)
 
+
+
+def basic_auth(username, password, required_scopes=None):
+	if username == 'admin' and password == 'secret':
+		return {'sub': 'admin'}
+
 def download_pic(url):
 	cwd = os.getcwd()
 	pic = open(f"{cwd}/image/predict.jpg","wb")
