@@ -10,7 +10,9 @@ import os
 import re
 import requests
 
-path_model_loc = "C:/Users/mickv/Documents/Jupyter Books/Workbooks/Projects/web_server/example/model"
+cwd = os.getcwd()
+
+path_model_loc = f"{cwd}/model"
 learn_predict = load_learner(path_model_loc)
 
 
